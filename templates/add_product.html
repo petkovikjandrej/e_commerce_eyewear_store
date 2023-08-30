@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block intro_section %}{% endblock intro_section %}
+{% block pre_footer %}{% endblock pre_footer %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card custom-card">
+                    <div class="card-header bg-dark text-white rounded-top">
+                        {% if update_mode %}
+                            <h2 class="text-center">Update Product</h2>
+                        {% else %}
+                            <h2 class="text-center">Add Product</h2>
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class="form-group mb-2">
+                                    <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                                    {{ field|add_class:"form-control" }}
+                                    {% if field.help_text %}
+                                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                                    {% endif %}
+                                    {% for error in field.errors %}
+                                        <div class="alert alert-danger">{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                            {% if update_mode %}
+                                <button type="submit" class="btn btn-primary mr-2">Save</button>
+                                <a href="{% url 'product_detail' product.id %}" class="btn btn-danger">Cancel</a>
+                            {% else %}
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-block">Add Product</button>
+                                </div>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

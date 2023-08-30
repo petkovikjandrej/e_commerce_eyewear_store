@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block intro_section %}{% endblock intro_section %}
+{% block pre_footer %}{% endblock pre_footer %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card custom-card">
+                <div class="card-header bg-dark text-white">
+                    <h2 class="text-center">Login</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" class="form-horizontal">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <!-- Assuming form field is username -->
+                            {{ form.username.label_tag }}
+                            {{ form.username|add_class:"form-control" }}
+                        </div>
+                        <div class="form-group mb-2">
+                            <!-- Assuming form field is password -->
+                            {{ form.password.label_tag }}
+                            {{ form.password|add_class:"form-control" }}
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{% url 'register' %}" class="btn btn-outline-secondary">Go to Register</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

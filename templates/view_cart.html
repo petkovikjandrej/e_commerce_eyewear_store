@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block intro_section %}{% endblock intro_section %}
+{% block pre_footer %}{% endblock pre_footer %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2>Your Cart</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Product</th>
+                <th>Image</th>
+                <th>Color</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in cart.items.all %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td><img src="{{ item.product.photo.url }}" alt="{{ item.product.name }}" width="100"></td>
+                    <td>{{ item.color.name }}</td>
+                    <td>${{ item.product.price }}</td>
+                    <td class="text-center">{{ item.quantity }}</td>
+                    <td>
+                        <a href="{% url 'remove_from_cart' item.product.id %}" class="btn btn-danger">Remove</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-end">
+            <h3>Total Cost: ${{ cart.total_price }}</h3>
+            <a href="{% url 'checkout' %}" class="btn btn-success">Proceed to Checkout</a>
+        </div>
+    </div>
+{% endblock %}

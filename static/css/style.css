@@ -1,0 +1,52 @@
+h2 {
+    color: #C49E00;
+}
+
+.custom-card {
+    border-color: #00C49E !important;
+    border-radius: 15px; /* Rounded corners */
+}
+
+.form-control {
+    border-radius: 10px; /* Rounded text boxes */
+}
+
+.btn-primary {
+    background-color: #00C49E;
+    border-color: #00C49E;
+}
+
+.btn-outline-secondary {
+    border-color: #00C49E;
+    color: #00C49E;
+}
+
+.btn-primary:hover {
+    background-color: #C49E00; /* You can make it a shade lighter or darker */
+    border-color: #C49E00;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #00C49E;
+    color: white;
+}
+
+.custom-card .card-header {
+    margin: -1px -1px 0 -1px; /* Adjust according to your needs */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.image-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.color-image.selected {
+    border: 2px solid #007bff; /* Use Bootstrap primary color */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: 1fr auto; /* 1fr for content, auto for footer */
+    min-height: 100vh;
+}

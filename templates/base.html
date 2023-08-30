@@ -1,0 +1,128 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vision.</title>
+
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/40a2826f35.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="grid-container">
+    <div>
+        {% include 'navbar.html' %}
+
+        {% block intro_section %}
+            <div class="container mt-5">
+                <div class="row">
+                    <!-- Left column for title and text -->
+                    <div class="col-md-6 d-flex flex-column align-items-center justify-content-center text-center">
+                        <h2>YOUR EYES ARE OUR RESPONSIBILITY</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore
+                            et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                            ut
+                            aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum
+                            dolore eu
+                            fugiat nulla pariatur.
+                        </p>
+                    </div>
+
+                    <!-- Right column for the image -->
+                    <div class="col-md-6 d-flex align-items-center justify-content-center">
+                        <img src="{% static 'images/lady_gaga_1.png' %}" alt="Descriptive Alt Text" class="img-fluid"
+                             width="500" height="500">
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        {% block pre_footer %}
+            <div class="container mt-4">
+                <div class="row">
+                    <!-- Left column for the image -->
+                    <div class="col-md-6 d-flex align-items-center justify-content-center">
+                        <img src="{% static 'images/lady_gaga_2.png' %}" alt="Descriptive Alt Text" class="img-fluid"
+                             width="500" height="500">
+                    </div>
+
+                    <!-- Right column for title and text -->
+                    <div class="col-md-6 d-flex flex-column align-items-center justify-content-center text-center">
+                        <h2>FASHION ABOVE ALL</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore
+                            et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                            ut
+                            aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum
+                            dolore eu
+                            fugiat nulla pariatur.
+                        </p>
+                        <div>
+                            <button class="btn btn-primary mr-2">EYEGLASSES</button>
+                            <button class="btn btn-primary">SUNGLASSES</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+    {% include 'footer.html' %}
+</div>
+
+<!-- Toast Notification Container -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="colorToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="{% static 'images/01f9c6.png' %}" class="me-2" alt="..." width="15px" height="15px">
+            <strong class="me-auto">Notification</strong>
+            <small>Just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Please select a color before adding to cart.
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<!-- Bootstrap JS (make sure it is added in your HTML) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Extra JS -->
+{% block extra_js %}
+    <script>
+        var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+        var toastList = toastElList.map(function (toastEl) {
+            return new bootstrap.Toast(toastEl);
+        });
+    </script>
+    {% block specific_js %}{% endblock %}
+{% endblock %}
+
+</body>
+</html>
